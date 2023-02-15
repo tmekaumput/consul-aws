@@ -43,7 +43,7 @@ variable "vpc_cidr" {
 
 variable "subnet_ids" {
   description = "Subnet ID(s) to provision resources in."
-  type        = "list"
+  type        = list(string)
 }
 
 variable "public" {
@@ -51,7 +51,7 @@ variable "public" {
   default     = false
 }
 
-variable "count" {
+variable "node_count" {
   description = "Number of Consul nodes to provision across private subnets, defaults to private subnet count."
   default     = -1
 }
@@ -127,7 +127,7 @@ variable "lb_logs_enabled" {
 
 variable "target_groups" {
   description = "List of target group ARNs to apply to the autoscaling group."
-  type        = "list"
+  type        = list(string)
   default     = []
 }
 
@@ -142,12 +142,13 @@ variable "users" {
 
 variable "tags" {
   description = "Optional map of tags to set on resources, defaults to empty map."
-  type        = "map"
+  type        = map(string)
   default     = {}
 }
 
 variable "tags_list" {
   description = "Optional list of tag maps to set on resources, defaults to empty list."
-  type        = "list"
+  type        = list(string)
   default     = []
 }
+
